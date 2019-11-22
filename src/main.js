@@ -16,7 +16,8 @@ $(document).ready(function() {
 
     (async () => {
       let doctorSearch = new DoctorSearch(userSymptom, docName);
-      const docResults = await doctorSearch.getDoctors();
+      await doctorSearch.getLocation();
+      let docResults = await doctorSearch.getDoctors();
       if(doctorSearch.error === true) {
         $('#no-results').text(doctorSearch.getDoctors())
       }

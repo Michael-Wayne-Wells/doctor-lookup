@@ -2,8 +2,8 @@ import $ from 'jquery';
 
 
 export class SearchResults {
-  constructor(docResults) {
-    this.result = docResults;
+  constructor(result) {
+    this.result = result;
     this.pastResults = [];
   }
 
@@ -37,10 +37,7 @@ export class SearchResults {
       let address = doc.practices[0].visit_address.street + " " + doc.practices[0].visit_address.city + ", " + doc.practices[0].visit_address.state + " " + doc.practices[0].visit_address.zip;
       let phone = doc.practices[0].phones[0].number;
 
-      Promise.all(website, acceptNew, firstName, lastName, address, phone).then(
-
       $('ul#search-results').append("<li id='doc-name'>" + firstName + " " + lastName + "</li>" + "<ul>" + "<li>Address: " + address + "</li>" + "<li> Phone: " + phone + "</li>" + "<li> Website: " + website() + "</li>" + "<li> Accepting new patients: " + acceptNew() + "</li>" + "</ul>")
-);
     });
   }
 }
