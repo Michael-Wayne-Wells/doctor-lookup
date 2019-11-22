@@ -11,15 +11,15 @@ $(document).ready(function() {
     event.preventDefault();
     let userSymptom = $('#symptom').val();
     let docName = $('#doctor-name').val();
+    $('#symptom').val('');
+    $('#doctor-name').val('');
 
     (async () => {
       let doctorSearch = new DoctorSearch(userSymptom, docName);
       const docResults = await doctorSearch.getDoctors();
       let newResults = new SearchResults(docResults);
       newResults.userResults();
-
     })();
-
 
   });
 
