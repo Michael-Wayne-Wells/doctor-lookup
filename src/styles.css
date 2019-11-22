@@ -9,6 +9,11 @@
   font-weight: bold;
 }
 
+#doc-name {
+  font-weight: bold;
+  list-style: none;
+}
+
 input {
   width: 100%;
 }

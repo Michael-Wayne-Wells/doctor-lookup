@@ -4,6 +4,7 @@ import $ from 'jquery';
 export class SearchResults {
   constructor(docResults) {
     this.result = docResults;
+    this.pastResults = [];
   }
 
   userResults() {
@@ -37,7 +38,8 @@ export class SearchResults {
       let phone = doc.practices[0].phones[0].number;
 
       Promise.all(website, acceptNew, firstName, lastName, address, phone).then(
-      $('ul#search-results').append("<li>Name: " + firstName + " " + lastName + "</li>" + "<ul>" + "<li>Address: " + address + "</li>" + "<li> Phone: " + phone + "</li>" + "<li> Website: " + website() + "</li>" + "<li> Accepting new patients: " + acceptNew() + "</li>" + "</ul>")
+
+      $('ul#search-results').append("<li id='doc-name'>" + firstName + " " + lastName + "</li>" + "<ul>" + "<li>Address: " + address + "</li>" + "<li> Phone: " + phone + "</li>" + "<li> Website: " + website() + "</li>" + "<li> Accepting new patients: " + acceptNew() + "</li>" + "</ul>")
 );
     });
   }
