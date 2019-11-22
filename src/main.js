@@ -10,17 +10,13 @@ $(document).ready(function() {
   $('form#user-input').submit(function(event) {
     event.preventDefault();
     let userSymptom = $('#symptom').val();
+    let docName = $('#doctor-name').val();
 
     (async () => {
-
-    let doctorSearch = new DoctorSearch(userSymptom);
-    const docResults = await doctorSearch.getDoctors();
-    let newResults = new SearchResults(docResults)
-    newResults.userResults(docResults);
-
-
-
-
+      let doctorSearch = new DoctorSearch(userSymptom, docName);
+      const docResults = await doctorSearch.getDoctors();
+      let newResults = new SearchResults(docResults)
+      newResults.userResults(docResults);
 
     })();
 
