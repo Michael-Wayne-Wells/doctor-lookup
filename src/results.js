@@ -7,9 +7,16 @@ export class SearchResults {
   }
 
   userResults() {
+
+
     let docArray = this.result.data;
+    if(docArray.length === 0){
+      $("#no-results").text("No results. Try another search.")
+    }
+
     docArray.forEach(function(doc) {
       let acceptNew = () => {
+
         if(doc.practices[0].accepts_new_patients == true){
           return "yes";
         }else{
@@ -23,13 +30,15 @@ export class SearchResults {
           return doc.practices[0].website;
         }
       };
+
       let firstName = doc.profile.first_name;
       let lastName = doc.profile.last_name;
       let address = doc.practices[0].visit_address.street + " " + doc.practices[0].visit_address.city + ", " + doc.practices[0].visit_address.state + " " + doc.practices[0].visit_address.zip;
       let phone = doc.practices[0].phones[0].number;
 
-      $('ul#search-results').append("<li>Name: " + firstName + " " + lastName + "</li>" + "<ul>" + "<li>Address: " + address + "</li>" + "<li> Phone: " + phone + "</li>" + "<li> Website: " + website() + "</li>" + "<li> Accepting new patients: " + acceptNew() + "</li>" + "</ul>" );
-
+      Promise.all(website, acceptNew, firstName, lastName, address, phone).then(
+      $('ul#search-results').append("<li>Name: " + firstName + " " + lastName + "</li>" + "<ul>" + "<li>Address: " + address + "</li>" + "<li> Phone: " + phone + "</li>" + "<li> Website: " + website() + "</li>" + "<li> Accepting new patients: " + acceptNew() + "</li>" + "</ul>")
+);
     });
   }
 }
