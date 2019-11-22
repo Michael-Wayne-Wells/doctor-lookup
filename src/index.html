@@ -4,20 +4,34 @@
   <meta charset="utf-8">
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <h1>Portland Doctor Search</h1>
+    </div>
+
+
+<div class="card">
+
 
   <form id="user-input">
-    <label>Enter a symptom for to find a doctor?</label>
+    <div class="form-group">
+
+    <label>Enter a symptom for to find a doctor:</label><br>
     <input id='symptom' type="text" placeholder="Enter a symptom">
-    <label>Doctor Lookup by Name</label>
-    <input id="doctor-name" type="text" placeholder="Enter a name">
-  <button type="submit" name="button"></button>
+  </div>
+  <div class="form-group">
+    <label>Doctor Lookup by Name:</label><br>
+    <input id="doctor-name" type="text" placeholder="Enter a name"></input>
+  </div>
+  <button class="btn btn-dark" type="submit" name="button">SEARCH</button>
   </form>
+  </div>
 
   <div class="results">
     <ul id="search-results">
 
     </ul>
   </div>
-
+</div>
   </body>
   </html>
