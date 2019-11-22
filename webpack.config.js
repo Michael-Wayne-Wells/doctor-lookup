@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-
+require('dotenv').config();
 
 module.exports = {
   entry: './src/main.js',
@@ -16,7 +16,7 @@ module.exports = {
     contentBase: './dist'
   },
   plugins: [
-    new Dotenv()
+    new Dotenv(),
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

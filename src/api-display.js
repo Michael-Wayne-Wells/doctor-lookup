@@ -3,19 +3,21 @@ export class DoctorSearch {
     this.symptom = symptom;
     this.doctorFirst = doctorFirst;
     this.doctorLast = doctorLast;
-    const apiUrl = `https://api.betterdoctor.com/2016-03-01/doctors?location=or-portland${searchVar}&&skip=0&limit=10&user_key=${prepare.env.API_KEY}`
   }
 
-  apiUrl() {
 
-  }
 
   async getDoctors() {
     try {
-      let response = await fetch(apiUrl);
-      let jsonResponse = await response.json;
+      console.log(process.env.API_KEY);
+      let response = await fetch(`https://api.betterdoctor.com/2016-03-01/doctors?query=${this.symptom}&location=or-portland&skip=0&limit=10&user_key=${process.env.API_KEY}`);
+console.log(response);
+      let jsonResponse = await response.json();
+      console.log(jsonResponse);
       return jsonResponse;
 
+    }catch(error){
+      console.error("There was an error handling your request: " + error.message);
     }
   }
 
