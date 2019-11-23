@@ -10,37 +10,37 @@
     </div>
 
 
-<div class="card">
+    <div class="card">
 
 
-  <form id="user-input">
-    <h4>Hello! It looks like you're trying to find a doctor in <span id="city"></span>.</h4>
-    <div class="form-group">
-      <select class="form-control" id="search-radious">
-      <option name="radius" type="radio" value="5">5 Miles</option>
-      <option name="radius" type="radio" value="10">10 Miles</option>
-      <option name="radius" type="radio" value="20">20 Miles</option>
-      <option name="radius" type="radio" value="50" selected>50 Miles</option>
-      <option name="radius" type="radio" value="100">100 Miles</option>
-    </select>
+      <form id="user-input">
+        <h4>Hello! It looks like you're trying to find a doctor in <span id="city"></span>.</h4>
+        <div class="form-group">
+          <select class="form-control" id="search-radious">
+            <option name="radius" type="radio" value="5">5 Miles</option>
+            <option name="radius" type="radio" value="10">10 Miles</option>
+            <option name="radius" type="radio" value="20">20 Miles</option>
+            <option name="radius" type="radio" value="50" selected>50 Miles</option>
+            <option name="radius" type="radio" value="100">100 Miles</option>
+          </select>
+        </div>
+        <div class="form-group">
+
+          <label>Enter a symptom for to find a doctor:</label><br>
+          <input id='symptom' type="text" placeholder="Enter a symptom">
+        </div>
+        <div class="form-group">
+          <label>Doctor Lookup by Name:</label><br>
+          <input id="doctor-name" type="text" placeholder="Enter a name"></input>
+        </div>
+        <button class="btn btn-dark" type="submit" name="button">SEARCH</button>
+      </form>
     </div>
-    <div class="form-group">
 
-    <label>Enter a symptom for to find a doctor:</label><br>
-    <input id='symptom' type="text" placeholder="Enter a symptom">
+    <div class="results">
+      <ul id="search-results"></ul>
+      <h4 id="no-results"></h4>
+    </div>
   </div>
-  <div class="form-group">
-    <label>Doctor Lookup by Name:</label><br>
-    <input id="doctor-name" type="text" placeholder="Enter a name"></input>
-  </div>
-  <button class="btn btn-dark" type="submit" name="button">SEARCH</button>
-  </form>
-  </div>
-
-  <div class="results">
-    <ul id="search-results"></ul>
-    <h4 id="no-results"></h4>
-  </div>
-</div>
-  </body>
-  </html>
+</body>
+</html>
