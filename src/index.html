@@ -14,6 +14,16 @@
 
 
   <form id="user-input">
+    <h4>Hello! It looks like you're trying to find a doctor in <span id="city"></span>.</h4>
+    <div class="form-group">
+      <select class="form-control" id="search-radious">
+      <option name="radius" type="radio" value="5">5 Miles</option>
+      <option name="radius" type="radio" value="10">10 Miles</option>
+      <option name="radius" type="radio" value="20">20 Miles</option>
+      <option name="radius" type="radio" value="50" selected>50 Miles</option>
+      <option name="radius" type="radio" value="100">100 Miles</option>
+    </select>
+    </div>
     <div class="form-group">
 
     <label>Enter a symptom for to find a doctor:</label><br>
@@ -30,6 +40,7 @@
   <div class="results">
     <ul id="search-results"></ul>
     <h4 id="no-results">
+      <h4 id="error-message"></h4>
 
     </h4>
   </div>

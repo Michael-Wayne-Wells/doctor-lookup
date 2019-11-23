@@ -7,19 +7,29 @@ import './styles.css';
 
 $(document).ready(function() {
 
+  let locationCheck = new DoctorSearch();
+  (async () => {
+  await locationCheck.getLocation();
+  $('#city').text(locationCheck.location[2])
+  })();
+
   $('form#user-input').submit(function(event) {
     event.preventDefault();
+    let radius = $('#search-radious option:selected').val();
+    console.log(radius);
     let userSymptom = $('#symptom').val();
     let docName = $('#doctor-name').val();
     $('#symptom').val('');
     $('#doctor-name').val('');
 
     (async () => {
-      let doctorSearch = new DoctorSearch(userSymptom, docName);
+      let doctorSearch = new DoctorSearch(userSymptom, docName, radius);
       await doctorSearch.getLocation();
       let docResults = await doctorSearch.getDoctors();
-      if(doctorSearch.error === true) {
-        $('#no-results').text(doctorSearch.getDoctors())
+    if(doctorSearch.error == true) {
+let error = await doctorSearch.getDoctors();
+  $('#error-message').text(error)
+
       }
       let newResults = new SearchResults(docResults);
       newResults.userResults();
