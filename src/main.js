@@ -15,12 +15,13 @@ $(document).ready(function() {
 
   $('form#user-input').submit(function(event) {
     event.preventDefault();
+
     let radius = $('#search-radious option:selected').val();
-    console.log(radius);
     let userSymptom = $('#symptom').val();
     let docName = $('#doctor-name').val();
     $('#symptom').val('');
     $('#doctor-name').val('');
+    $('#search-results').empty();
 
     (async () => {
       let doctorSearch = new DoctorSearch(userSymptom, docName, radius);
@@ -28,7 +29,7 @@ $(document).ready(function() {
       let docResults = await doctorSearch.getDoctors();
     if(doctorSearch.error == true) {
 let error = await doctorSearch.getDoctors();
-  $('#error-message').text(error)
+  $('#no-results').text(error)
 
       }
       let newResults = new SearchResults(docResults);

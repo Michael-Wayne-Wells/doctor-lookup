@@ -22,11 +22,14 @@ async getLocation() {
   async getDoctors() {
     try {
       let response = await fetch(`https://api.betterdoctor.com/2016-03-01/doctors?name=${this.doctorName}&query=${this.symptom}&location=${this.location[0]}%2c${this.location[1]}%2c${this.radius}&skip=0&limit=10&user_key=${process.env.API_KEY}`);
-        console.log(response);
+        if (response.ok === false) {
+          this.error = true;
+          return "There was an error handling your request: " + error.message;
+        } else {
       let jsonResponse = await response.json();
 
       return jsonResponse;
-
+}
     }catch(error){
       this.error = true;
       console.log(error.message);
